@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robotname" default="sos1"/>
+  <!-- <group ns="$(arg robotname)"> -->
+
+    <node pkg="viso2_ros" type="mono_odometer" name="mono_odometer">
+      <param name="sensor_frame_id" type="string" value="$(arg robotname)/camera_depth_optical_frame" />
+      <remap from="/$(arg robotname)/camera_info" to="/$(arg robotname)/camera/depth/camera_info" />
+      <remap from="mono" to="$(arg robotname)/camera"/>
+
+      <remap from="image" to="$(arg robotname)/camera/rgb"/>
+      <remap from="/$(arg robotname)/camera/camera_info" to="/$(arg robotname)/camera/depth/camera_info"/>
+
+      <param name="base_link_frame_id" value="/base_link"/>
+      <param name="camera_height" value="480"/>
+      <!-- <param name="sensor_frame_id" value="/openni_rgb_optical_frame"/> Y-->
+    </node>
+
+  <!-- </group> -->
+
+
+</launch>

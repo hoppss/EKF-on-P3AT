@@ -1,0 +1,63 @@
+<launch>
+
+  <arg name="robotname" default="sos1"/>
+
+
+
+  <!-- <include file="$(find setup)/launch/P3AT_launch_files/p3at_utm_odometry.launch">
+    <arg name="robotname" value="$(arg robotname)"/>
+  </include> --> <!-- felan kharabe! -->
+
+  <!-- <include file="$(find setup)/launch/P3AT_launch_files/p3at_VO.launch">
+    <arg name="robotname" value="$(arg robotname)"/>
+  </include> -->
+
+  <!--
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" output="screen">
+    <param name="yaw_offset" value="1.5707963267948966"/>
+    <param name="zero_altitude" value="true"/>
+    <param name="publish_filtered_gps" value="true"/> <
+    <param name="broadcast_utm_transform" value="true"/>
+    <param name="use_odometry_yaw" value="false"/>
+
+    <param name="wait_for_datum" value="false"/>
+    <rosparam param="datum">[49.2757225, -122.895907, 134.4, map, base_link]</rosparam>
+
+
+    <remap from="/gps/fix" to="/$(arg robotname)/gps/fix"/>
+    <remap from="/imu/data" to="/$(arg robotname)/imu"/>
+    <remap from="/odometry/filtered" to="/$(arg robotname)/odom"/>
+  </node>
+    -->
+
+  <!-- robot_pose_ekf using IMU, visual odometry and GPS odometry to estmate the 3Dpose of a robot -->
+  <!-- <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf" respawn="true" output="screen">
+    <param name="output_frame" value="odomEKF"/>
+    <param name="base_footprint_frame" value="base_link"/>
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="true"/>
+    <param name="debug" value="false"/>
+    <param name="self_diagnose" value="false"/>
+
+    < - - Remap input topics - ->
+    <remap from="" to"" />
+    <remap from="" to"" />
+    <remap from="" to"" />
+  </node>
+-->
+
+
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" respawn="true" output="screen">
+    <rosparam command="load" file="$(find setup)/config/P3AT_localization/localization.yaml" />
+    <param name="base_footprint_frame" value="base_link"/> <!--maybe it's unnecessary-->
+    <param name="output_frame" value="odomEKF"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <remap from="imu/data" to="$(arg robotname)/imu/data" />
+    <remap from="velocity_controller/odom" to="$(arg robotname)/odom" />
+  </node>
+ </launch>
