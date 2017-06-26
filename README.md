@@ -18,14 +18,14 @@ frameId : The body name tf id
 GPS create by Hector GPS plugin that used in pioneer3at_body.xacro.
 The Hector GPS plugin publishes NavSatFix data. To convert NavSatFix to odometry that has UTM position, we use gps_conv_utm node in the gps_common message. It's called in p3at_utm_odometry launch file in p3at_localization package.
 
-### Parameters
-#### Hector plugin
+#### Parameters
+##### Hector plugin
 robotNamespace : The namespace of the robot that set in robotname parameter in the launch file
 bodyName : The name of the base link of the robot, set in pioneer3at_body.xacro
 topicName : The output topic of the GPS sensor
 velocityTopicName : The output topic of the GPS sensor that shows the velocity of the robot
 frameId : The map tf id
-#### GPS to UTM converter node
+##### GPS to UTM converter node
 odom : Output odometry name
 frame_id : The body name tf id
 fix : Input GPS topic
