@@ -8,10 +8,10 @@ To use EKF you must run p3at_ekf launch file in the p3at_localization package, t
 IMU create by Hector IMU plugin that used in pioneer3at_body.xacro and publish Odometry.
 
 #### Parameters
-robotNamespace : The namespace of the robot that set in robotname parameter in the launch file</br>
+```robotNamespace : The namespace of the robot that set in robotname parameter in the launch file</br>
 bodyName : The name of the base link of the robot, set in pioneer3at_body.xacro</br>
 topicName : The output topic of the IMU sensor</br>
-frameId : The body name tf id
+frameId : The body name tf id```
 
 ### GPS
 GPS create by Hector GPS plugin that used in pioneer3at_body.xacro.</br>
@@ -19,12 +19,12 @@ The Hector GPS plugin publishes NavSatFix data. To convert NavSatFix to odometry
 
 #### Parameters
 ##### Hector plugin
-robotNamespace : The namespace of the robot that set in robotname parameter in the launch file</br>
+```robotNamespace : The namespace of the robot that set in robotname parameter in the launch file</br>
 bodyName : The name of the base link of the robot, set in pioneer3at_body.xacro</br>
 topicName : The output topic of the GPS sensor</br>
 velocityTopicName : The output topic of the GPS sensor that shows the velocity of the robot</br>
-frameId : The map tf id
+frameId : The map tf id```
 ##### GPS to UTM converter node
-odom : Output odometry name</br>
+```odom : Output odometry name</br>
 frame_id : The body name tf id</br>
-fix : Input GPS topic
+fix : Input GPS topic that publishes by the plugin```
