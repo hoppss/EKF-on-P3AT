@@ -33,11 +33,14 @@
       <param name="publish_frequency" type="double" value="15.0" />
       <param name="use_gui" value="false" />
     </node>
+
     <node pkg="gazebo_ros" type="spawn_model" name="gazebo1"  args="-param robot_description -urdf -z 0.05 -y $(arg initialy) -x $(arg initialx) -model $(arg robotname)" />
 
-    <include file="$(find setup)/launch/P3AT_launch_files/p3at_ekf.launch">
+
+    <!-- <include file="$(find p3at_localization)/launch/p3at_ekf.launch">
       <arg name="robotname" value="$(arg robotname)"/>
-    </include>
+    </include> -->
+
     <!--node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop1"  /-->   <!-- backup teleop-->
 
 

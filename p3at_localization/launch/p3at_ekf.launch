@@ -1,0 +1,29 @@
+<launch>
+
+  <arg name="robotname" default="sos1"/>
+
+
+
+  <!-- GPS and UTM Odometry -->
+  <include file="$(find p3at_localization)/launch/p3at_utm_odometry.launch">
+    <arg name="robotname" value="$(arg robotname)"/>
+  </include>
+
+
+  <!-- Visual Odometry -->
+  <!-- <include file="$(find p3at_localization)/launch/p3at_VO.launch">
+    <arg name="robotname" value="$(arg robotname)"/>
+  </include> -->
+
+
+  <!-- robot_pose_ekf using IMU, -visual odometry and GPS odometry to estmate the 3Dpose of a robot -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" respawn="true" output="screen">
+    <rosparam command="load" file="$(find setup)/config/P3AT_localization/localization.yaml" />
+    <param name="robotNamespace" value="$(arg robotname)" />
+    <!-- <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+  <param name="gps_used" value="true"/> -->
+  </node>
+
+
+ </launch>

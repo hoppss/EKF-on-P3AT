@@ -1,26 +1,58 @@
+map_frame: map
 odom_frame: odom
 base_link_frame: base_link
 world_frame: odom
 
-two_d_mode: true
+# no 3D informations will be used if this item is true
+two_d_mode: false
 
 frequency: 50
 
-odom0: velocity_controller/odom
-odom0_config: [false, false, false,
+# publish some log to /diagnostics topic
+print_diagnostics: true
+
+debug: true
+debug_out_file: /home/alireza/catkin/-debug/IranOpen/ekf_localization.txt
+
+# publish the /tf topic
+publish_tf: true
+
+#publish the acceleration state
+publish_acceleration: true
+
+
+### GPS data (UTM odometry)
+odom0: utm_odom
+# TODO:check the config
+odom0_config: [true, true, true,
                false, false, false,
-               true, true, true,
-               false, false, true,
+               false, false, false,
+               false, false, false,
                false, false, false]
 odom0_differential: false
-odom0_queue_size: 10
+### GPS data -end
 
+
+### VO data
+#odom1: ?? vo
+# TODO:check the config
+#odom1_config: [true, true, true,
+#               false, false, false,
+#               false, false, false,
+#               false, false, false,
+#               false, false, false]
+#odom1_differential: false
+### VO data -end
+
+
+### IMU data
 imu0: imu/data
+# TODO:check the config
 imu0_config: [false, false, false,
               true, true, true,
               false, false, false,
               true, true, true,
-              false, false, false]
-imu0_differential: true
-imu0_queue_size: 10
+              true, true, true]
+imu0_differential: false
 imu0_remove_gravitational_acceleration: true
+### IMU data -end

@@ -3,7 +3,7 @@
   <arg name="robotname" default="sos1"/>
   <group ns="$(arg robotname)">
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen">
 
       <!--rosparam file="$(find setup)/config/Valid_p3at/aux/base_local_planner_params.yaml" command="load" /-->
       <rosparam file="$(find setup)/config/P3AT_navigation/costmap_common_params.yaml" command="load" ns="global_costmap" />

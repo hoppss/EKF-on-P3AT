@@ -245,19 +245,21 @@
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <broadcastTF>true</broadcastTF>
+      <broadcastTF>true</broadcastTF> <!-- publishing odom by gazebo, if set true -->
     </plugin>
+  </gazebo>
+
 
     <!-- todo : set robot_name argument instead of "sos1" -->
 
-
+  <gazebo>
     <plugin name="hector_imu" filename="libhector_gazebo_ros_imu.so">
       <robotNamespace>/sos1</robotNamespace>
       <updateRate>50.0</updateRate>
       <bodyName>base_link</bodyName>
       <topicName>imu/data</topicName>
       <frameId>sos1/base_link</frameId>
-      
+
       <accelDrift>0.005 0.005 0.005</accelDrift>
       <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
       <rateDrift>0.005 0.005 0.005 </rateDrift>
@@ -267,19 +269,19 @@
     </plugin>
 
     <plugin name="hector_gps" filename="libhector_gazebo_ros_gps.so">
-      <updateRate>40.0</updateRate>
+      <robotNamespace>/sos1</robotNamespace>
+      <updateRate>50.0</updateRate>
       <bodyName>base_link</bodyName>
-      <frameId>base_link</frameId>
-      <topicName>fix</topicName>
-      <velocityTopicName>fix_velocity</velocityTopicName>
-      <referenceLatitude>49.860246</referenceLatitude>
+      <frameId>map</frameId>
+      <topicName>gps/fix</topicName>
+      <velocityTopicName>gps/fix_velocity</velocityTopicName>
+      <!-- <referenceLatitude>49.860246</referenceLatitude>
       <referenceLongitude>8.687077</referenceLongitude>
       <drift>5.0 5.0 5.0</drift>
       <velocityDrift>0 0 0</velocityDrift>
       <gaussianNoise>0.01 0.01 0.01</gaussianNoise>
-      <velocityGaussianNoise>0.05 0.05 0.05</velocityGaussianNoise>
+      <velocityGaussianNoise>0.05 0.05 0.05</velocityGaussianNoise> -->
     </plugin>
-
   </gazebo>
 
 
