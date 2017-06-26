@@ -8,7 +8,8 @@ To use EKF you must run p3at_ekf launch file in the p3at_localization package, t
 IMU create by Hector IMU plugin that used in pioneer3at_body.xacro and publish Odometry.
 
 #### Parameters
-```robotNamespace : The namespace of the robot that set in robotname parameter in the launch file
+```console
+robotNamespace : The namespace of the robot that set in robotname parameter in the launch file
 bodyName : The name of the base link of the robot, set in pioneer3at_body.xacro
 topicName : The output topic of the IMU sensor
 frameId : The body name tf id
