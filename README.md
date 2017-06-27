@@ -49,6 +49,8 @@ base_link_frame_id : The base link frame id
 In p3at_ekf launch file, the p3at_utm_odometry and the p3at_VO launch files are called.</br>
 The EKF config is set in the localization.yaml file.</br>
 
+The p3at_ekf is called in spawn launch file.
+
 #### Parameters in the yaml file
 ```map_frame : The map frame id
 odom_frame : The odometry frame id
