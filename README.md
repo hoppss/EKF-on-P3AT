@@ -1,4 +1,4 @@
-# robot-test
+# EKF on P3AT robot
 
 ## EKF Localization
 I use EKF to estimate robot covariance with GPS, IMU and Visual Odometry.</br>
