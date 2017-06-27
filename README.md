@@ -8,15 +8,16 @@ To use EKF you must run p3at_ekf launch file in the p3at_localization package, t
 IMU create by Hector IMU plugin that used in pioneer3at_body.xacro and publish Odometry.
 
 #### Parameters
-```<font color="blue">robotNamespace</font> : The namespace of the robot that set in robotname parameter in the launch file
-<font color="blue">bodyName</font> : The name of the base link of the robot, set in pioneer3at_body.xacro
-<font color="blue">topicName</font> : The output topic of the IMU sensor
-<font color="blue">frameId</font> : The body name tf id
+```
+robotNamespace : The namespace of the robot that set in robotname parameter in the launch file
+bodyName : The name of the base link of the robot, set in pioneer3at_body.xacro
+topicName : The output topic of the IMU sensor
+frameId : The base link tf id
 ```
 
 ### GPS
 GPS create by Hector GPS plugin that used in pioneer3at_body.xacro.</br>
-The Hector GPS plugin publishes NavSatFix data. To convert NavSatFix to odometry that has UTM position, we use gps_conv_utm node in the gps_common message. It's called in p3at_utm_odometry launch file in p3at_localization package.
+The Hector GPS plugin publishes NavSatFix data. To convert NavSatFix to odometry that has UTM position, I use gps_conv_utm node in the gps_common package. It's called in p3at_utm_odometry launch file in p3at_localization package.
 
 #### Parameters
 ##### Hector plugin
@@ -30,4 +31,15 @@ frameId : The map tf id
 ```odom : Output odometry name
 frame_id : The body name tf id
 fix : Input GPS topic that publishes by the plugin
+```
+
+### Visual Odometry
+Visual Odometry is the process of determining the position and orientation of a robot by analyzing the associated camera images.</br>
+We can use mono_odometer or stereo_odometer node in viso2_ros package. The robot has one camera so I use mono_odometer node. The other node is used when we have two or more image sensor.</br>
+
+#### Parameters
+```sensor_frame_id : The input camera frame
+mono : The camera topic root
+image : The camera topic that publish image data. In this case, its name is rgb
+base_link_frame_id : The base link tf id
 ```
